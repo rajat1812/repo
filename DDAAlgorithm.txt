@@ -1,0 +1,40 @@
+TO DRAW A LINE USING DDA ALGORITHM.
+
+#include<iostream.h>
+#include<conio.h>
+#include<graphics.h>
+#include<dos.h>
+void main()
+{
+clrscr();
+int gdriver=DETECT,gmode;
+initgraph(&gdriver,&gmode,"c:\\turboc3\\bgi");
+int x,y,x1,y1,x2,y2,dx,dy,length,xin,yin,i;
+cout<<"ENTER THE COORDINATES X1 & Y1:"<<endl;
+cin>>x1>>y1;
+cout<<"ENTER THE COORDINATES X2 & Y2:"<< endl;
+cin>>x2>>y2;
+dx=x2-x1;
+dy=y2-y1;
+if(dx>=dy)
+{
+length=dx;
+}
+else
+{
+length=dy;
+}
+xin=dx/length;
+yin=dy/length;
+x=x1;
+y=y1;
+for(i=0;i<length;i++)
+{
+putpixel(x,y,3);
+x=x+xin;
+y=y+yin;
+}
+getch();
+}
+
+
