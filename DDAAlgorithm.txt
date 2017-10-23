@@ -37,4 +37,3 @@ y=y+yin;
 getch();
 }
 
-

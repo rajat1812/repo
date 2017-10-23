@@ -1,0 +1,86 @@
+TO DRAW A LINE USING BRESENHAM'S ALGORITHM.
+
+#include<iostream.h>
+#include<conio.h>
+#include<graphics.h>
+#include<dos.h>
+void main()
+{
+int gd=DETECT,gm;
+initgraph(&gd,&gm,"c:\\turboc3\\bgi");
+cleardevice();
+int x,y,x1,x2,y1,y2,dx,dy,dx2,dy2,p;
+cout<<"ENTER THE POINT 1:";
+cin>>x1>>y1;
+cout<<"ENTER THE POINT 2:";
+cin>>x2>>y2;
+dx=x2-x1;
+dy=y2-y1;
+dx2=dx*2;
+dy2=dy*2;
+p=dy2-dx;
+x=x1;
+y=y1;
+putpixel(x,y,14);
+while (x<=x2)
+{
+if(p<0)
+{
+++x;
+putpixel(x,y,10);
+p+=dy2;
+}
+else
+{++x;
+++y;
+putpixel(x,y,6);
+p+=(dy2-dx2);
+}}
+getch();}
+
+
+
+
+TO DRAW A CIRCLE USING BRESENHAM'S ALGORITHM.
+
+#include<iostream.h>
+#include<conio.h>
+#include<graphics.h>
+void draw(int x,int y,int c)
+{
+int a,b,r;
+a=320;
+b=240;
+putpixel(x+a,y+b,c);
+putpixel(x+a,-y+b,c);
+putpixel(-x+a,y+b,c);
+putpixel(-x+a,-y+b,c);
+putpixel(y+a,x+b,c);
+putpixel(y+a,-x+b,c);
+putpixel(-y+a,x+b,c);
+putpixel(-y+a,-x+b,c);
+}
+void main()
+{
+int gd=DETECT,gm;
+initgraph(&gd,&gm,"c:\\turboc3\\bgi");
+cout<<"Enter the radius of the circle to be drawn:" ;
+cin>>r;
+int x,y,p;
+x=0,y=r;
+p=3-(2*r);
+while(x<y)
+{if(p<=0)
+p+=(4*x)+6;
+else
+{p+=4*(x-y)+10;
+--y;
+}
+++x;
+draw(x,y,5);
+}
+getch();
+closegraph();
+}
+
+
